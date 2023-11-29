@@ -21,17 +21,16 @@
   margin: 10px 10px 10px 0;
 }
 
-.input {
+.form .input {
   width: 80%;
   height: 30px;
-  background-color: transparent;
 }
 
 .input::placeholder {
   color: royalblue;
 }
 
-.form .input {
+.input {
   border: none;
   border-bottom: 1px solid royalblue;
   padding-left: 12px;
@@ -39,6 +38,7 @@
   outline: none;
   color: blue;
   font-weight: bold;
+  background-color: transparent;
 }
 
 .form .btn {
@@ -55,6 +55,12 @@
   background-color: cornflowerblue;
   color: white;
   cursor: pointer;
+}
+
+.btn.btn-sm {
+  width: auto;
+  height: 40px;
+  padding: 0 12px;
 }
 
 .btn:hover {
@@ -87,13 +93,22 @@ ul { margin: 0; padding: 0; }
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.todoItem.active {
+  background-color: royalblue;
+  color: white;
+}
+
+.todoItem.active .btn:hover {
+  background-color: blue;
+}
+
 .todoItem .item {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.todoItem input {
+.todoItem input[type='checkbox'] {
   display: none;
 }
 
@@ -111,7 +126,7 @@ ul { margin: 0; padding: 0; }
   border: 3px solid blue;
 }
 
-.todoItem input:checked ~ span {
+.todoItem input:checked ~ input {
   text-decoration: line-through;
 }
 
