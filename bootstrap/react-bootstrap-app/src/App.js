@@ -7,8 +7,6 @@ function App() {
     <Container>
       <h1>Hello, Bootstrap!</h1>
       <Button variant="primary">Click me</Button>
-      <Button variant="secondary">Click me</Button>
-      <Button variant="warning">Click me</Button>
     </Container>
   );
 }

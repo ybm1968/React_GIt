@@ -12,5 +12,6 @@ code {
     monospace;
 }
 
-/* Bootstrap 5 스타일 추가 */
+
+/* ✅ Bootstrap import */
 @import "~bootstrap/dist/css/bootstrap.min.css";
