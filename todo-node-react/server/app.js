@@ -5,6 +5,8 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 const { sequelize } = require('./models');      // ✅ 시퀄라이즈
+const cors = require('cors');
+
 
 // dotenv 라이브러리를 사용하여 환경 변수를 로드하는 부분
 // 이 메소드를 호출하면 프로젝트 루트에 위치한 .env 파일의 환경 변수가 process.env 객체에 추가됩니다.
@@ -12,12 +14,16 @@ dotenv.config();
 
 // 👩‍💻 라우터 모듈 import
 const indexRouter = require('./routes/index');
+// const boardRouter = require('./routes/board');
 const todoRouter = require('./routes/todo');
 
 const app = express();
 
+// CORS 미들웨어 추가
+app.use(cors());
+
 // 포트 설정: 환경 변수에서 PORT를 가져오고, 없을 경우 기본값으로 3000 사용
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 
 // ✅ 시퀄라이즈 싱크
 // - 데이터베이스 테이블 생성 또는 동기화
@@ -67,6 +73,7 @@ app.use(session({
 
 // 👩‍💻 라우터 설정
 app.use('/', indexRouter);
+// app.use('/board', boardRouter);
 app.use('/todo', todoRouter);
 
 // 404 오류 처리 미들웨어
