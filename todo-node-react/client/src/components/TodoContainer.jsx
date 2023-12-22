@@ -9,7 +9,7 @@ const TodoContainer = () => {
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8080/todos')
+    fetch('/todo')
       .then((response) => response.json())
       .then((data) => setTodoList(data))
       .catch((error) => console.log(error));
@@ -40,10 +40,12 @@ const TodoContainer = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/todos', init);
+      const response = await fetch('http://localhost:8080/todo', init);
       const newTodo = await response.json();
       const updatedList = [newTodo, ...todoList]
+      console.log("등록 값 : ");
       setTodoList( updatedList );
+      console.log(todoList);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +65,7 @@ const TodoContainer = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:8080/todos/${no}`, init);
+      const response = await fetch(`http://localhost:8080/todo/${no}`, init);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -91,7 +93,7 @@ const TodoContainer = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/todos', init);
+      const response = await fetch('http://localhost:8080/todo', init);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -125,7 +127,7 @@ const TodoContainer = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/todos', init);
+      const response = await fetch('http://localhost:8080/todo', init);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -133,7 +135,7 @@ const TodoContainer = () => {
 
     setTodoList((todoList) => {
       return todoList.map((item) => {
-        return { ...item, status: true };
+        return { ...item, status: !item.status };
       }).sort((a, b) => {
         return a.status - b.status == 0 ? b.no - a.no : a.status - b.status;
       })
@@ -157,7 +159,7 @@ const TodoContainer = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:8080/todos/-1`, init);
+      const response = await fetch(`http://localhost:8080/todo/-1`, init);
       console.log(response);
     } catch (error) {
       console.log(error);

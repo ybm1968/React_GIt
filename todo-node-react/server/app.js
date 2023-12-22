@@ -37,8 +37,8 @@ sequelize.sync({ force: false })
   });
 
 // 뷰 엔진 설정: Pug를 사용하도록 설정
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
 
 // 로깅 미들웨어 설정: 개발 환경에서는 dev 모드로 로그를 출력
 app.use(morgan('dev'));
